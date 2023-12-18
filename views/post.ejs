@@ -1,0 +1,55 @@
+<%- include('./partials/header.ejs') %> <%- include('./partials/nav.ejs') %>
+
+<div
+  class="info1"
+  style="max-width: 520px; margin: 0 auto; border: 10px solid green"
+>
+  <% if(post.title) { %>
+  <div>
+    <h1 style="text-align: center"><%=post.title%></h1>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores
+      voluptas quod, ducimus dolorum architecto in, laboriosam quos totam soluta
+      fugiat, a illum quibusdam minus.
+    </p>
+    <table class="table table-striped sorting">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="id_<%= post._id %>" class="">
+          <td><%= post.title %></td>
+          <td><%= post.author %></td>
+          <td><a href="/edit-post/<%= post._id %>">Edit</a></td>
+          <td>
+            <a class="confirmDeletion" href="" data-id="<%= post._id %>"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%} else {%>
+    <h1 style="text-align: center">There are no posts yet!</h1>
+
+    <%}%>
+  </div>
+</div>
+<script>
+  document.addEventListener("click", (e) => {
+    const id = e.target?.dataset?.id || null;
+    if (id) {
+      fetch(`/posts/${id}`, {
+        method: "DELETE",
+      }).then(() => {
+        window.location.reload();
+      });
+    }
+  });
+</script>
+<%- include('./partials/footer.ejs') %>

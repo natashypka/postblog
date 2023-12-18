@@ -1,0 +1,35 @@
+<%- include('./partials/header.ejs') %> <%- include('./partials/nav.ejs') %>
+<div style="max-width: 520px; margin: 0 auto">
+  <h1><%=title%></h1>
+  <div>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores
+    voluptas quod, ducimus dolorum architecto in, laboriosam quos totam soluta
+    fugiat, a illum quibusdam minus.
+  </div>
+
+  <form method="post" action="">
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Назва </label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="title"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Прізвище</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="author"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Створити</button>
+  </form>
+</div>
+<%- include('./partials/footer.ejs') %>
